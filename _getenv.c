@@ -46,7 +46,7 @@ void free_PATH(list_t *head)
 * Return: 0 on success otherwise -1
 */
 
-int _myenv2(data_t *data)
+int _myenv2(__attribute__ ((unused)) data_t *data)
 {
 	int i = 0;
 	char nl = '\n';
