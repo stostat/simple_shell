@@ -1,0 +1,78 @@
+.TH SHEAVEN 1 "16 April 2020" "0.1" "Holberton School" "Simple_shell"
+.SH NAME
+.B SHEAVEN
+- a simple UNIX command interpreter
+.SH SYNOPSIS
+.B #include \(dqshell.h\(dq
+.sp
+.B ./hsh
+.sp
+.SH DESCRIPTION
+.B Overview
+.sp
+Sheaven is a simple command interpreter. It reads commands from the
+standard input, interprets them, and attempts to execute them. 
+.sp
+.B Invocation
+.sp
+if invoked from a standard input connected to a terminal is ready to 
+take commands interactively, display a prompt before each command line 
+and after the execution. If running the shell from a pipe line, 
+sheaven attempts to execute the command line and exists.
+.SH PATH
+The default search path for executables
+.sp
+.SH Builtins
+.sp
+This section lists the builtin commands to perform
+internal operations.
+.sp
+.IP "-pwd"
+.sp
+Print the name of the current working directory.
+.sp 
+Exit Status:
+Returns 0 unless an invalid option is given or the current directory
+cannot be read.
+.IP "-cd"
+.sp 
+Change the shell working directory.
+Change the current directory to specified.
+.sp 
+Exit Status:
+Returns 0 if the directory is changed, non-zero otherwise.
+.IP "-env [OPTION]"
+.sp
+Prints the enviroment variables.
+Without argument prints all the variables.
+.IP "exit [n]"
+.sp
+Exit the shell.
+Exits with a status of "n".  If "n" is omitted, the exit status
+is that of the last command executed.
+.IP "help [command]"
+.sp
+Retrieve informational text on how use builtin
+.SH EXAMPLES
+.RE
+.sp
+gcc -Wall -Werror -pedantic *.c  -o hsh. -g
+.sp
+\f"./hsh\fR
+.sp
+$ ls -l
+
+total 232
+.sp
+-rw-rw-r-- 1 mat mat   217 abr 16 20:54 AUTHORS
+.sp
+-rwxrwxr-x 1 mat mat  1002 abr 17 01:20 builtins.c
+.sp
+-rwxrwxr-x 1 mat mat   574 abr 17 01:20 _dupenv.c
+.sp
+$ 
+.sp
+.B echo ls | ./hsh
+.sp
+.SH AUTHORS
+Santiago Mendieta, Manuel Torres, Fabio Gutierrez
