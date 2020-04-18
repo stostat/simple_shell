@@ -16,10 +16,10 @@ char *_getenv(__attribute__ ((unused)) data_t *data, char *name)
 	for (index = 0; environ[index]; index++)
 	{
 		if (_strncmp(name, environ[index], len) == 0)
-			return (environ[index]);
+			return (environ[index] + 5);
 	}
 
-	return (NULL);
+	return (0);
 }
 
 /**

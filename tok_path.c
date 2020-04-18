@@ -11,7 +11,7 @@ list_t *sep_path(data_t *data)
 	char *sep = ":";
 	char *path_block = NULL;
 
-	path_block = _getenv(data, "PATH") + 5;
+	path_block = _getenv(data, "PATH");
 	if (path_block != NULL)
 	{
 		path = parse_path(path_block, _strlen(path_block), sep);

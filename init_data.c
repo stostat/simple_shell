@@ -16,5 +16,4 @@ void init_data(data_t *data, char **av)
 		data->env = _dupenv();
 	if (!data->env)
 		*data->env = getcwd(NULL, 0);
-	data->path = _getenv(data, "PATH") + 5;
 }
