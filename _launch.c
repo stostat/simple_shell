@@ -28,6 +28,7 @@ int _launch(data_t *data)
 				free_env(data);
 				free_args(data);
 				free(func);
+				data->ext = 127;
 				exit(data->ext);
 			}
 		}
