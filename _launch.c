@@ -8,43 +8,38 @@
 int _launch(data_t *data)
 {
 	pid_t pid;
-	int status;
+	int status = 0;
 	char *func = NULL;
-	int read = 0;
 
 	func = exec_path(data);
 	if (func)
 	{
 		pid = fork();
+		if (pid == -1)
+		{
+			if (func)
+				free(func);
+			perror("mfs:");
+		}
 		if (pid == 0)
 		{
-			read = execve(func, data->args, data->env);
-			if (read != -1)
-				perror("mfs: perror 126 acces");
-			else
-			{
-				if (errno == EACCES)
-					_errora(data);
-				free_env(data);
-				free_args(data);
-				free(func);
-				data->ext = 127;
-				exit(data->ext);
-			}
+			execve(func, data->args, data->env);
+			if (errno == EACCES)
+				_errora(data);
+			free_all(data);
+			free(func);
+			exit(data->ext);
 		}
-		if (pid == -1)
-			perror("mfs");
 		else
 		{
 			do {
 			waitpid(pid, &status, WUNTRACED);
 			} while (WIFEXITED(status) && WIFSIGNALED(status));
+			data->ext = WEXITSTATUS(status);
 		}
 	}
 	else
-	{
 		_errorf(data);
-	}
 	free(func);
 	return (data->status);
 }

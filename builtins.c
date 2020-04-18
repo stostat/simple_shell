@@ -61,7 +61,7 @@ int myexit(data_t *data)
 {
 	free_args(data);
 	free_env(data);
-	if (data->ext == 127)
+	if (data->ext != 0)
 		exit(data->ext);
 	exit(0);
 }
