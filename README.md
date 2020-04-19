@@ -164,4 +164,13 @@ You can find all the information on our man page
 
 >>https://app.diagrams.net/#G1LC_F4Ss5qHXNA5NKIuUAo5PHcCVRhmeV
 
+***
+
+### *BLOG*
+A blog with literature about this specific topic has been writen, this blog can be found at the following link:
+
+    https://medium.com/@fafegu25/linux-commands-ls-and-its-option-l-51d720769d6a
+    
+---
+# thanks
 
