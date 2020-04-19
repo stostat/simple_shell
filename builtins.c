@@ -66,7 +66,7 @@ int myexit(data_t *data)
 	if (data->args[1])
 	{
 		status = _atoi(data->args[1]);
-		if (status == 0)
+		if (status <= 0)
 		{
 			write(STDERR_FILENO, data->name, _strlen(data->name));
 			write(STDERR_FILENO, ": ", 2);
@@ -75,7 +75,6 @@ int myexit(data_t *data)
 			write(STDERR_FILENO, data->args[0], _strlen(data->args[0]));
 			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, mess, _strlen(mess));
-			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, data->args[1], _strlen(data->args[1]));
 			write(STDERR_FILENO, "\n", 2);
 			free(count);
