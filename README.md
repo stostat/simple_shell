@@ -172,5 +172,5 @@ A blog with literature about this specific topic has been writen, this blog can 
     https://medium.com/@fafegu25/linux-commands-ls-and-its-option-l-51d720769d6a
     
 ---
-#thanks
+# thanks
 
