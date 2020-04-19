@@ -9,5 +9,5 @@ void sig_handler(int sig_num)
 {
 	(void)sig_num;
 	signal(SIGINT, sig_handler);
-	write(STDIN_FILENO, "\n$ ", 3);
+	write(STDIN_FILENO, "\nಠ╭╮ಠ > ", 9);
 }
