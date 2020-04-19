@@ -59,9 +59,44 @@ int printwd(data_t *data)
 */
 int myexit(data_t *data)
 {
+	int status;
+	char *mess = "Illegal number: ";
+	char *count = _itoa(data->count);
+
+	if (data->args[1])
+	{
+		status = _atoi(data->args[1]);
+		if (status == 0)
+		{
+			write(STDERR_FILENO, data->name, _strlen(data->name));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, count, _strlen(count));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, data->args[0], _strlen(data->args[0]));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, mess, _strlen(mess));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, data->args[1], _strlen(data->args[1]));
+			write(STDERR_FILENO, "\n", 2);
+			free(count);
+			data->ext = 2;
+			return (0);
+		}
+		else
+		{
+			data->ext = status;
+			free(count);
+			free_args(data);
+			free_env(data);
+			if (data->ext != 0)
+				exit(data->ext);
+		}
+	}
+	free(count);
 	free_args(data);
 	free_env(data);
 	if (data->ext != 0)
 		exit(data->ext);
 	exit(0);
+	return (0);
 }

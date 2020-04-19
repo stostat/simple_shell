@@ -98,6 +98,8 @@ int _strcmp2(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 int _delimiters(char c, char *delimiter);
+int _atoi(char *s);
+char *_itoa(int number);
 size_t listint_len(const list_t *h);
 
 void free_args(data_t *data);
