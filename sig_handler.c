@@ -7,7 +7,9 @@
  */
 void sig_handler(int sig_num)
 {
+	char *prompt = "\nಠ╭╮ಠ > ";
+
 	(void)sig_num;
 	signal(SIGINT, sig_handler);
-	write(STDIN_FILENO, "\nಠ╭╮ಠ > ", 9);
+	write(STDIN_FILENO, prompt, _strlen(prompt));
 }
