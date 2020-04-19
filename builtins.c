@@ -12,7 +12,7 @@ int _cd(data_t *data)
 	if (!swd)
 		perror("getcwd"), exit(EXIT_FAILURE);
 	if (data->args[1] == NULL)
-		chdir(_getenv(data, "HOME") + 5);
+		chdir(_getenv(data, "HOME"));
 	else if (chdir(data->args[1]) != 0)
 		perror("mfs");
 	else
