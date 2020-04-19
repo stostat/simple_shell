@@ -2,7 +2,7 @@
 
 /**
  * loop_prompt - loop for prompt
- * @data: sata structure
+ * @data: data structure
  * Return: 0 on succes
 */
 int loop_prompt(data_t *data)

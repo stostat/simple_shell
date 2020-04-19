@@ -49,7 +49,7 @@ ssize_t read_line(data_t *data)
 		read--;
 		data->count++;
 		for (i = 0; data->buf[i]; i++)
-			if (data->buf[i] == '#' && data->buf[i - 1] == ' ')
+			if (data->buf[i] == '#' && (!i || data->buf[i - 1] == ' '))
 			{
 				data->buf[i] = '\0';
 				break;
