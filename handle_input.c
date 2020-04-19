@@ -32,6 +32,7 @@ ssize_t read_line(data_t *data)
 {
 	size_t len = 0;
 	ssize_t read = 0;
+	int i;
 
 	data->buf = NULL;
 
@@ -47,6 +48,12 @@ ssize_t read_line(data_t *data)
 		data->buf[read - 1] = '\0';
 		read--;
 		data->count++;
+		for (i = 0; data->buf[i]; i++)
+			if (data->buf[i] == '#' && data->buf[i - 1] == ' ')
+			{
+				data->buf[i] = '\0';
+				break;
+			}
 	}
 	return (read);
 }
