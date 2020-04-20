@@ -3,9 +3,15 @@
 .B SHEAVEN
 - a simple UNIX command interpreter
 .SH SYNOPSIS
-.B #include \(dqshell.h\(dq
 .sp
-.B ./hsh
+the program is compiled with the following command:
+.sp
+.B
+gcc -Wall -Werror -pedantic *.c  -o hsh. -g
+.sp
+#include \(dqshell.h\(dq
+.sp
+./hsh
 .sp
 .SH DESCRIPTION
 .B Overview
@@ -19,9 +25,26 @@ if invoked from a standard input connected to a terminal is ready to
 take commands interactively, display a prompt before each command line 
 and after the execution. If running the shell from a pipe line, 
 sheaven attempts to execute the command line and exists.
-.SH PATH
-The default search path for executables
+.SH PATH SEARCH
 .sp
+The default search path for executables.
+if a command is located inside one of the folders in the path, it is not necessary to give the absolute path. 
+.sp
+for example:
+.sp
+/bin/ls -la
+.sp
+ls -la
+.SH Exit status
+.sp
+When the execution of a command is finished, an output value is assigned as follows:
+.sp
+2 if the command failed or received a termination signal.
+.sp
+126 if do not have permission to execute the command
+.sp
+127 the command was not found
+
 .SH Builtins
 .sp
 This section lists the builtin commands to perform
@@ -32,6 +55,7 @@ internal operations.
 Print the name of the current working directory.
 .sp 
 Exit Status:
+.sp
 Returns 0 unless an invalid option is given or the current directory
 cannot be read.
 .IP "-cd"
@@ -54,9 +78,10 @@ is that of the last command executed.
 .sp
 Retrieve informational text on how use builtin
 .SH EXAMPLES
+.sp
+.B Interactive mode:
 .RE
 .sp
-gcc -Wall -Werror -pedantic *.c  -o hsh. -g
 .sp
 \f"./hsh\fR
 .sp
@@ -71,6 +96,8 @@ total 232
 -rwxrwxr-x 1 mat mat   574 abr 17 01:20 _dupenv.c
 .sp
 $ 
+.sp
+.B Not interactive mode:
 .sp
 .B echo ls | ./hsh
 .sp
