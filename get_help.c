@@ -19,8 +19,8 @@ int get_help(void)
 */
 int more_help(data_t *data)
 {
-	int i, j = -1;
-	char comp[4][5] = {"cd", "pwd", "exit", "env"};
+	int i = 0, j = 0;
+	char comp[5][5] = {"cd", "pwd", "exit", "env"};
 	char pcd[] = "cd: cd [dir]\nChange the shell working directory.\n"
 	"Change the current directory to specified.\nExit Status:\n"
 	"Returns 0 if the directory is changed, non-zero otherwise.\n";
@@ -33,10 +33,10 @@ char pexit[] = "exit: exit [n]\nExit the shell.\n"
 char penv[] = "env: env [OPTION]\nPrints the enviroment variables\n"
 "Without argument prints all the variables.\n";
 
-	for (i = 0; comp[i]; i++)
+	for (i; i <= 4; i++)
 	{
 		j = _strcmp2(data->args[1], comp[i]);
-		if (j == 0 || j == -1)
+		if (j == 0 || i == 4)
 			break;
 	}
 	switch (i)
@@ -58,5 +58,4 @@ char penv[] = "env: env [OPTION]\nPrints the enviroment variables\n"
 		break;
 	}
 	return (0);
-
 }
