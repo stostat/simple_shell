@@ -83,7 +83,7 @@ char *_strncat(char *dest, char *src, int n)
 
 int _strcmp2(char *s1, char *s2)
 {
-	int cmp;
+	int cmp = 0;
 
 	while (*s1 && *s2)
 	{

@@ -6,18 +6,20 @@
 */
 int _cd(data_t *data)
 {
-	char *swd;
-
-	swd = getcwd(NULL, 0);
-	if (!swd)
-		perror("getcwd"), exit(EXIT_FAILURE);
-	if (data->args[1] == NULL)
-		chdir(_getenv(data, "HOME"));
+	if (data->args[1] == NULL || _strcmp2(data->args[1], "~") == 0)
+	{
+		if (!(_getenv(data, "HOME")))
+		{
+			perror("mfs");
+			return (1);
+		}
+		else
+			chdir(_getenv(data, "HOME"));
+	}
 	else if (chdir(data->args[1]) != 0)
 		perror("mfs");
 	else
 		chdir(data->args[1]);
-	free(swd);
 	return (1);
 }
 
