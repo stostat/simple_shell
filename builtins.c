@@ -7,7 +7,6 @@
 int _cd(data_t *data)
 {
 	char *swd;
-	char *previous = "-";
 	char *home = "~";
 
 	swd = getcwd(NULL, 0);
